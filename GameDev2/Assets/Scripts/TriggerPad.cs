@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TriggerPad : MonoBehaviour
 {
-    public GameObject sphere;   //The object we wish to change
+    public GameObject sphere;   
 
     public float growSpeed = 0.025f;
     public float originalScale = 1.5f;
