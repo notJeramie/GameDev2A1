@@ -5,22 +5,44 @@ using UnityEngine;
 public class FiringPoint : MonoBehaviour
 {
     public Projectile projectilePrefab;
+    public Projectile SlingProjectile;
     public Transform firingPoint;
     public LayerMask targetLayer;
+
+    public GameObject[] gunTypes;
+    public int gunCount;
     // Start is called before the first frame update
     void Start()
     {
-        
+        gunCount = gunTypes.Length;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        //Pistol
+        if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            /*Projectile newProjectile;
-            newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
-            Destroy(newProjectile.gameObject, 5f);*/
+            gunCount = 0;
+        }
+
+        //Machine
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            gunCount = 1;
+        }
+
+        //Slingshot
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            gunCount = 2;
+        }
+
+        if (Input.GetButtonDown("Fire1") && gunCount == 0)
+        {
+            //Projectile newProjectile;
+            //newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
+            //Destroy(newProjectile.gameObject, 5f);
 
             RaycastHit hitInfo;
             if(Physics.Raycast(firingPoint.position, firingPoint.forward, out hitInfo, 1000f, targetLayer))
@@ -36,13 +58,28 @@ public class FiringPoint : MonoBehaviour
                 if (sphereTrigger != null && sphereTrigger.inTrigger)
                 //if (hitInfo.collider.gameObject.name == ("Sphere"))
                 {
-                    Debug.Log("it works");
                     sphereTrigger.shoot = true;
                 }
 
 
                 Debug.Log("hit" + hitInfo.collider.gameObject.name);
             }
+
+            
+        }
+
+        if (Input.GetButtonDown("Fire1") && gunCount == 1)
+        {
+            Projectile newProjectile;
+            newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
+            Destroy(newProjectile.gameObject, 5f);
+        }
+
+        if (Input.GetButtonDown("Fire1") && gunCount == 2)
+        {
+            Projectile newProjectile;
+            newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
+            Destroy(newProjectile.gameObject, 5f);
         }
 
         if (Input.GetKeyDown(KeyCode.E))
@@ -54,7 +91,6 @@ public class FiringPoint : MonoBehaviour
                 if (sphereTrigger != null && sphereTrigger.inTrigger)
                 //if (hitInfo.collider.gameObject.name == ("Sphere"))
                 {
-                    Debug.Log("E");
                     sphereTrigger.ePressed = true;
                 }
             }

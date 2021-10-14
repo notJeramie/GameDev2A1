@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform groundCheck;
 
-    Vector3 velocity;
+    public Vector3 velocity;
 
     bool isGrounded;
 
