@@ -5,16 +5,19 @@ using UnityEngine;
 public class FiringPoint : MonoBehaviour
 {
     public Projectile projectilePrefab;
-    public Projectile SlingProjectile;
+    public GameObject SlingProjectile;
     public Transform firingPoint;
+    public Transform firingPoint2;
     public LayerMask targetLayer;
+    public float chargeSpeed = 1f;
+    public float chargeTime;
 
     public GameObject[] gunTypes;
     public int gunCount;
     // Start is called before the first frame update
     void Start()
     {
-        gunCount = gunTypes.Length;
+        gunCount = 0;
     }
 
     // Update is called once per frame
@@ -68,19 +71,49 @@ public class FiringPoint : MonoBehaviour
             
         }
 
-        if (Input.GetButtonDown("Fire1") && gunCount == 1)
+
+        if (Input.GetButton("Fire1") && gunCount == 1)
         {
             Projectile newProjectile;
             newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
             Destroy(newProjectile.gameObject, 5f);
+        }
+       
+
+        //SlingShot
+        if (Input.GetButton("Fire1") && gunCount == 2)
+        {
+            chargeSpeed = chargeSpeed + 10;
+        }
+        else
+        if (chargeSpeed == chargeTime)
+        {
+            chargeSpeed = chargeTime;
+        }
+        else
+        {
+            chargeSpeed = 1f;
         }
 
-        if (Input.GetButtonDown("Fire1") && gunCount == 2)
+        if(chargeSpeed >= chargeTime)
         {
-            Projectile newProjectile;
-            newProjectile = Instantiate(projectilePrefab, firingPoint.position, firingPoint.rotation);
-            Destroy(newProjectile.gameObject, 5f);
+            chargeSpeed = chargeTime;
         }
+
+        if (Input.GetButtonUp("Fire1") && gunCount == 2)
+        {
+           // chargeSpeed = 1f;
+        }
+
+        if (Input.GetButtonUp("Fire1") && gunCount == 2 && chargeSpeed == chargeTime)
+        {
+            chargeSpeed = 1f;
+            GameObject newProjectile2;
+            newProjectile2 = Instantiate(SlingProjectile, firingPoint2.position, firingPoint2.rotation);
+            Destroy(newProjectile2.gameObject, 5f);
+        }
+        //Slingshot End
+
 
         if (Input.GetKeyDown(KeyCode.E))
         {

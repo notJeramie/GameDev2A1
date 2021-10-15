@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class SlingProjectile : MonoBehaviour
 {
+    public GameObject cube;
     public float spinSpeed = 1f;
     public float chargeTime;
+    public float growSpeed;
+    public float origionalScale;
+    public float shrinkScale;
 
     public bool freeze;
 
@@ -42,6 +46,17 @@ public class SlingProjectile : MonoBehaviour
         {
             freeze = false;
             spinSpeed = 1f;
+            cube.transform.localScale = Vector3.one * shrinkScale;
+
+        }
+
+        if (transform.localScale.x >= origionalScale && transform.localScale.z >= origionalScale && transform.localScale.y >= origionalScale)
+        {
+            cube.transform.localScale = Vector3.one * origionalScale;
+        }
+        else
+        {
+            cube.transform.localScale += Vector3.one * growSpeed * Time.deltaTime;
         }
     }
 }
