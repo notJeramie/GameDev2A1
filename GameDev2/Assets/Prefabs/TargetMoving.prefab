@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5606224262249260593}
   - component: {fileID: 6612352852879210759}
+  - component: {fileID: 8370768942055570673}
   m_Layer: 0
-  m_Name: Target
+  m_Name: TargetMoving
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +49,20 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   targetSize: 0
   scaleFactor: 0
+--- !u!114 &8370768942055570673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141021713250560774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81107b970ebf9624d909a2d6513be956, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myType: 0
+  health: 0
 --- !u!1 &7707630110851336574
 GameObject:
   m_ObjectHideFlags: 0

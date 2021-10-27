@@ -37,4 +37,5 @@ public class EnemyManager : MonoBehaviour
 
         Debug.Log("Total: " + enemy.Count);
     }
+
 }
