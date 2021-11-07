@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3778392947597571922}
   - component: {fileID: 2583338211799245513}
-  m_Layer: 0
+  - component: {fileID: 2510877375719534650}
+  m_Layer: 7
   m_Name: TargetLarge
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +46,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 7360951961207917817}
   targetSize: 0
   scaleFactor: 0
+--- !u!136 &2510877375719534650
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1732087090214268052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.94974077
+  m_Height: 1.9593894
+  m_Direction: 1
+  m_Center: {x: 1.5924233e-17, y: -0.055399776, z: 0.0050268173}
 --- !u!1 &7510280074297830365
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +74,6 @@ GameObject:
   - component: {fileID: 6152139456759451826}
   - component: {fileID: 3940548395227500392}
   - component: {fileID: 7360951961207917817}
-  - component: {fileID: 4861713525327396793}
   m_Layer: 7
   m_Name: TargetBig
   m_TagString: Target
@@ -130,17 +144,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &4861713525327396793
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7510280074297830365}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

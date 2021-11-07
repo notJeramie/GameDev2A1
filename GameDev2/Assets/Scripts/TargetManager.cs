@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class TargetManager : MonoBehaviour
+public class TargetManager : Singleton<TargetManager>
 {
     public Transform[] spawnPoint;
     public GameObject[] targetTypes;
@@ -36,5 +36,10 @@ public class TargetManager : MonoBehaviour
         //    GameObject newSpawn = Instantiate(targetTypes[targetIndex], spawnPoint[spawnIndex].position + (Random.onUnitSphere * 2.0f), spawnPoint[spawnIndex].rotation);
         //    target.Add(newSpawn);
         // }
+    }
+
+    public void Remove(Target toRemove)
+    {
+        target.Remove(toRemove.gameObject);
     }
 }

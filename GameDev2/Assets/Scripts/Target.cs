@@ -13,13 +13,20 @@ public enum TargetSize
 
 public class Target : MonoBehaviour
 {
-    public int health = 2;
-
     public MeshRenderer meshRenderer;
 
     public TargetSize targetSize;
+    public Difficulty difficulty;
+
+    public bool isDead = false;
+
+    public int health = 2;
 
     public float scaleFactor;
+    public float targetScore = 1f;
+    public float addTime = 5f;
+    public float difficultyScale;
+
 
 
 
@@ -55,21 +62,55 @@ public class Target : MonoBehaviour
         {
             OnKill();
         }
+
+        DifficultyChange();
+
     }
 
     public void OnHit()
     {
         health = (health - 1);
 
+        if (health <= 0 && !isDead)
+        {
+            GameManager.instance.score = (GameManager.instance.score + targetScore);
+            GameManager.instance.timeLeft = (GameManager.instance.timeLeft + addTime);
+            isDead = true;
+        }
+
         if (health == 1)
         {
             meshRenderer.material.color = Color.yellow;
+
         }
     }
 
     public void OnKill()
     {
+
         meshRenderer.material.color = Color.red;
         Destroy(gameObject, 1f);
+        TargetManager.instance.Remove(this);
     }
+
+    public void DifficultyChange()
+    {
+        if (difficulty == Difficulty.Easy)
+        {
+            difficultyScale = 1.5f;
+        }
+
+        if (difficulty == Difficulty.Medium)
+        {
+            difficultyScale = 1;
+        }
+
+        if (difficulty == Difficulty.Hard)
+        {
+            difficultyScale = 0.5f;
+        }
+        transform.localScale = Vector3.one * scaleFactor;
+        SetUp();
+    }
+    
 }

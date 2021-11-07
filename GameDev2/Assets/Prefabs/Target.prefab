@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 5606224262249260593}
   - component: {fileID: 6612352852879210759}
-  m_Layer: 0
+  - component: {fileID: 5130471154294073926}
+  m_Layer: 7
   m_Name: Target
-  m_TagString: Untagged
+  m_TagString: Target
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,9 +46,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 2
-  meshRenderer: {fileID: 0}
+  meshRenderer: {fileID: 3128986308952242775}
   targetSize: 0
   scaleFactor: 0
+--- !u!136 &5130471154294073926
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141021713250560774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.6783947
+  m_Height: 1.4232361
+  m_Direction: 1
+  m_Center: {x: 4.143942e-17, y: -0.0009390116, z: 0.010728538}
 --- !u!1 &7707630110851336574
 GameObject:
   m_ObjectHideFlags: 0
@@ -59,7 +74,6 @@ GameObject:
   - component: {fileID: 306058321379604522}
   - component: {fileID: 2648728602276719806}
   - component: {fileID: 3128986308952242775}
-  - component: {fileID: 8735347579000408274}
   m_Layer: 7
   m_Name: Target
   m_TagString: Target
@@ -130,17 +144,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &8735347579000408274
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7707630110851336574}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5000001
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}

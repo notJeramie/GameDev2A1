@@ -56,6 +56,12 @@ public class FiringPoint : MonoBehaviour
                     target.OnHit();
                 }
 
+                Enemy enemy = hitInfo.collider.GetComponent<Enemy>();
+                if (enemy != null)
+                {
+                    enemy.Hit();
+                }
+
                 TriggerPad2 sphereTrigger = hitInfo.collider.GetComponent<TriggerPad2>();
                 if (sphereTrigger != null && sphereTrigger.inTrigger)
                 //if (hitInfo.collider.gameObject.name == ("Sphere"))

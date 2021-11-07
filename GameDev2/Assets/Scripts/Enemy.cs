@@ -16,25 +16,29 @@ public class Enemy : MonoBehaviour
     float moveDistance = 500f;
     public EnemyType myType;
 
+    public Animator anim;
+
     public float health;
+    public float onHitScore = 10f;
+    public float onKillSore  = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
-        // if (myType == EnemyType.OneHand)
-        // {
-        //     health = 100;
-        // }
-        //
-        // if (myType == EnemyType.TwoHand)
-        // {
-        //     health = 150;
-        // }
-        // 
-        // if (myType == EnemyType.Archer)
-        // {
-        //     health = 50;
-        // }
+        if (myType == EnemyType.OneHand)
+        {
+            health = 100;
+        }
+        
+        if (myType == EnemyType.TwoHand)
+        {
+            health = 150;
+        }
+        
+        if (myType == EnemyType.Archer)
+        {
+            health = 50;
+        }
 
 
         Setup();
@@ -62,10 +66,34 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     /*if (Input.GetKeyDown(KeyCode.Space))
+     if (Input.GetKeyDown(KeyCode.H))
         {
-            StartCoroutine(Move());
-        }*/
+            Hit();
+        }
+
+     if (health <= 0)
+        {
+            Die();
+        }
+    }
+
+
+    public void Hit()
+    {
+        anim.SetTrigger("Hit");
+        health = (health -= 10);
+        GameManager.instance.AddScore(onHitScore);
+    }
+
+    public void Die()
+    {
+        anim.SetTrigger("Die");
+        GameManager.instance.AddScore(onKillSore);
+
+        StopAllCoroutines();
+        Destroy(gameObject, 3f);
+        
+
     }
 
     IEnumerator Move()

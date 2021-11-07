@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : MonoBehaviour
+public class EnemyManager : Singleton<EnemyManager>
 {
 
     public Transform[] spawnPoint;
@@ -24,6 +24,14 @@ public class EnemyManager : MonoBehaviour
     {
         
     }
+
+    public void Remove(Enemy toRemove)
+    {
+        enemy.Remove(toRemove.gameObject);
+        Debug.Log(enemy.Count);
+    }
+
+
     [ContextMenu("SpawnEnemy")]
     public void SpawnEnemy()
     {

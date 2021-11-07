@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TargetMove : MonoBehaviour
 {
-    float moveDistance = 500f;
+    public float moveDistance = 500f;
     // Start is called before the first frame update
     void Start()
     {
